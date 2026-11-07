@@ -1,0 +1,21 @@
+{
+  "name": "discrete-structures-app",
+  "version": "1.0.0",
+  "description": "Diskret tuzilmalar fanidan 15 ta mavzuni to'liq o'z ichiga olgan zamonaviy interaktiv ilova",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "python": "python3 server.py"
+  },
+  "keywords": [
+    "discrete-structures",
+    "math",
+    "graphs",
+    "logic",
+    "combinatorics",
+    "venn",
+    "algorithms"
+  ],
+  "author": "Antigravity",
+  "license": "MIT"
+}

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diskret Tuzilmalar — Zamonaviy O'quv va Yechish Tizimi</title>
+  
+  <!-- Modern Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/glass.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- Ambient Glowing Background Orbs (Glassmorphism Depth) -->
+  <div class="ambient-glow-orb orb-1"></div>
+  <div class="ambient-glow-orb orb-2"></div>
+  <div class="ambient-glow-orb orb-3"></div>
+
+  <div id="app-container">
+    
+    <!-- Sidebar -->
+    <aside id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-icon">∑</div>
+        <div>
+          <div class="brand-title">Diskret Tuzilmalar</div>
+        </div>
+      </div>
+
+      <div class="sidebar-search-box">
+        <input type="text" id="sidebar-search" class="sidebar-search-input" placeholder="Mavzularni qidirish (1-15)...">
+      </div>
+
+      <nav class="sidebar-nav" id="sidebar-nav">
+        <!-- Rendered dynamically by App.js -->
+      </nav>
+
+      <div class="sidebar-footer" style="flex-direction: column; gap: 8px;">
+        <div style="display: flex; justify-content: space-between; width: 100%;">
+          <span>15 ta To'liq Bo'lim</span>
+          <span class="badge badge-emerald">100% Tayyor</span>
+        </div>
+        <button class="glass-btn glass-btn-accent glass-btn-sm" style="width: 100%;" onclick="SymbolHelper.openModal()">
+          🔣 Belgilar Ensiklopediyasi
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main id="main-content">
+      <!-- Top Sticky Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="sidebar-toggle-btn" onclick="App.toggleSidebar()">☰</button>
+          <div class="header-title-box">
+            <h1 id="header-module-title" class="header-module-title">Diskret Tuzilmalar</h1>
+            <span id="header-module-sub" class="header-module-sub">Mavzu 1 / 15 • Interaktiv Tahlil va Yechimlar</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Glass Theme Picker -->
+          <select id="theme-selector" class="glass-input" style="width: auto; padding: 6px 12px; font-size: 12px; font-weight: 600;" onchange="App.setTheme(this.value)">
+            <option value="violet">🌌 Kosmik Shisha</option>
+            <option value="cyan">💎 Kiber Moviy</option>
+            <option value="matrix">🌿 Zumrad Matritsa</option>
+          </select>
+
+          <!-- Cheat Sheet Button -->
+          <button class="glass-btn glass-btn-secondary glass-btn-sm" onclick="App.toggleCheatSheet()" title="Asosiy formulalar va teoremalar shparqalkasi">
+            📋 Formulalar
+          </button>
+
+          <!-- Print / PDF Export Button -->
+          <button class="glass-btn glass-btn-secondary glass-btn-sm" onclick="window.print()" title="Yechimni PDF saqlash yoki chop etish">
+            🖨️ PDF / Chop
+          </button>
+
+          <!-- Symbols Button -->
+          <button class="glass-btn glass-btn-accent glass-btn-sm" onclick="SymbolHelper.openModal()">
+            🔣 Belgilar
+          </button>
+
+          <!-- Guide -->
+          <button class="glass-btn glass-btn-primary glass-btn-sm" onclick="window.open('ISHLATISH_QOLLANMASI.md', '_blank')">
+            📖 Qo'llanma
+          </button>
+        </div>
+      </header>
+
+      <!-- Active Module Viewport -->
+      <div id="module-container" class="module-view">
+        <!-- Module content rendered here -->
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Floating Quick-Symbols Dock at bottom of screen -->
+  <div id="quick-symbols-dock" class="quick-dock">
+    <div class="quick-dock-title">
+      <span>⚡ Belgilar:</span>
+    </div>
+    <div class="quick-dock-symbols">
+      <button type="button" class="symbol-pill-btn" onclick="SymbolHelper.insertSymbol('∅')">∅</button>
+      <button type="button" class="symbol-pill-btn" onclick="SymbolHelper.insertSymbol('∈')">∈</button>
+      <button type="button" class="symbol-pill-btn" onclick="SymbolHelper.insertSymbol('∉')">∉</button>
+      <button type="button" class="symbol-pill-btn" onclick="SymbolHelper.insertSymbol('⊆')">⊆</button>
+      <button type="button" class="symbol-pill-btn" onclick="SymbolHelper.insertSymbol('∪')">∪</button>
+      <button type="button" class="symbol-pill-btn" onclick="SymbolHelper.insertSymbol('∩')">∩</button>
+      <button type="button" class="symbol-pill-btn" onclick="SymbolHelper.insertSymbol('∖')">∖</button>
+      <button type="button" class="symbol-pill-btn" onclick="SymbolHelper.insertSymbol('Δ')">Δ</button>
+      <button type="button" class="symbol-pill-btn" onclick="SymbolHelper.insertSymbol('×')">×</button>
+      <button type="button" class="symbol-pill-btn" onclick="SymbolHelper.insertSymbol('¬')">¬</button>
+      <button type="button" class="symbol-pill-btn" onclick="SymbolHelper.insertSymbol('∧')">∧</button>
+      <button type="button" class="symbol-pill-btn" onclick="SymbolHelper.insertSymbol('∨')">∨</button>
+      <button type="button" class="symbol-pill-btn" onclick="SymbolHelper.insertSymbol('→')">→</button>
+      <button type="button" class="symbol-pill-btn" onclick="SymbolHelper.insertSymbol('↔')">↔</button>
+      <button type="button" class="symbol-pill-btn" onclick="SymbolHelper.insertSymbol('⊕')">⊕</button>
+      <button type="button" class="symbol-pill-btn" onclick="SymbolHelper.insertSymbol('↑')">↑</button>
+      <button type="button" class="symbol-pill-btn" onclick="SymbolHelper.insertSymbol('↓')">↓</button>
+      <button type="button" class="symbol-pill-btn" onclick="SymbolHelper.insertSymbol('≤')">≤</button>
+      <button type="button" class="symbol-pill-btn" onclick="SymbolHelper.insertSymbol('≥')">≥</button>
+      <button type="button" class="symbol-pill-btn" onclick="SymbolHelper.insertSymbol('n!')">n!</button>
+    </div>
+    <div class="quick-dock-actions">
+      <button type="button" class="glass-btn glass-btn-accent glass-btn-sm" style="padding: 3px 8px; font-size: 11px;" onclick="SymbolHelper.openModal()">
+        🔣 Ensiklopediya
+      </button>
+    </div>
+  </div>
+
+  <!-- Slide-Over Formula Cheat Sheet Drawer -->
+  <aside id="cheatsheet-drawer" class="cheatsheet-drawer">
+    <div class="cheatsheet-header">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 18px;">📋</span>
+        <h3 style="font-size: 16px; color: #fff;">Formulalar va Teoremalar</h3>
+      </div>
+      <button class="glass-btn glass-btn-secondary glass-btn-sm" onclick="App.toggleCheatSheet()" style="padding: 2px 8px;">✕</button>
+    </div>
+    <div class="cheatsheet-body">
+      <!-- 1. To'plamlar -->
+      <div class="theory-card">
+        <div class="theory-head" style="color: #38bdf8;">1. To'plamlar qonunlari</div>
+        <div class="theory-body">
+          • De Morgan: (A ∪ B)' = A' ∩ B'<br>
+          • De Morgan: (A ∩ B)' = A' ∪ B'<br>
+          • Kiritish-chiqarish: |A ∪ B| = |A| + |B| - |A ∩ B|
+        </div>
+      </div>
+
+      <!-- 2. Mantiq -->
+      <div class="theory-card">
+        <div class="theory-head" style="color: #a855f7;">2. Mantiq & Bul Algebrasi</div>
+        <div class="theory-body">
+          • Implikatsiya: A → B ≡ ¬A ∨ B<br>
+          • Kontrapozitsiya: A → B ≡ ¬B → ¬A<br>
+          • XOR: A ⊕ B ≡ (A ∧ ¬B) ∨ (¬A ∧ B)<br>
+          • Sheffer (NAND): A ↑ B ≡ ¬(A ∧ B)<br>
+          • Pirs (NOR): A ↓ B ≡ ¬(A ∨ B)
+        </div>
+      </div>
+
+      <!-- 3. Kombinatorika -->
+      <div class="theory-card">
+        <div class="theory-head" style="color: #34d399;">3. Kombinatorika Formulalari</div>
+        <div class="theory-body">
+          • Permutatsiya: Pₙ = n!<br>
+          • O'rinlashtirish: Aₙᵏ = n! / (n - k)!<br>
+          • Takrorli o'rinlashtirish: Āₙᵏ = nᵏ<br>
+          • Guruhlash: Cₙᵏ = n! / (k!(n - k)!)<br>
+          • Takrorli guruhlash: C̄ₙᵏ = C(n + k - 1, k)<br>
+          • Dirixle printsipi: kamida ⌈n / k⌉ ta
+        </div>
+      </div>
+
+      <!-- 4. Graflar -->
+      <div class="theory-card">
+        <div class="theory-head" style="color: #fbbf24;">4. Graflar Teoremalari</div>
+        <div class="theory-body">
+          • Handshaking lemma: ∑ deg(v) = 2 · |E|<br>
+          • Eyler planar formulasi: V - E + F = 2<br>
+          • Planarlik chegarasi: E ≤ 3V - 6<br>
+          • Daraxt xossasi: |E| = |V| - 1 (siklsiz)<br>
+          • Eyler sikli: barcha deg(v) juft bo'lsa<br>
+          • Eyler yo'li: aniq 2 ta toq darajali uch
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Toast Notification System -->
+  <div id="toast-container"></div>
+
+  <!-- Core Scripts -->
+  <script src="js/math-utils.js"></script>
+  <script src="js/canvas-utils.js"></script>
+  <script src="js/symbols-data.js"></script>
+  <script src="js/symbols-helper.js"></script>
+
+  <!-- 15 Course Topic Modules -->
+  <script src="js/modules/m01_intro_sets.js"></script>
+  <script src="js/modules/m02_venn_operations.js"></script>
+  <script src="js/modules/m03_ordered_sets.js"></script>
+  <script src="js/modules/m04_relations.js"></script>
+  <script src="js/modules/m05_combinatorics.js"></script>
+  <script src="js/modules/m06_power_inclusion.js"></script>
+  <script src="js/modules/m07_boolean_algebra.js"></script>
+  <script src="js/modules/m08_truth_tables.js"></script>
+  <script src="js/modules/m09_logic_gates.js"></script>
+  <script src="js/modules/m10_graph_basics.js"></script>
+  <script src="js/modules/m11_paths_cycles.js"></script>
+  <script src="js/modules/m12_planar_graphs.js"></script>
+  <script src="js/modules/m13_trees_forest.js"></script>
+  <script src="js/modules/m14_directed_graphs.js"></script>
+  <script src="js/modules/m15_shortest_path.js"></script>
+
+  <!-- Application Initializer -->
+  <script src="js/app.js"></script>
+</body>
+</html>
